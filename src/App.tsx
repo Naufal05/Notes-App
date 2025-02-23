@@ -43,6 +43,11 @@ function App() {
       return {...note, tags:tags.filter(tag => note.tagIds.includes(tag.id))}
     })
   }, [notes, tags])
+
+  // function handles the creation of a note
+  // function onCreateNote(data: NoteData){
+
+  // } 
   return (
     <Container className="my-4">
     <Routes>
