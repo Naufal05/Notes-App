@@ -10,13 +10,13 @@ type NoteFormProps = {
 
 export function NoteForm({onSubmit} : NoteFormProps) {
     const titleRef = useRef<HTMLInputElement>(null)
-    const markdonwRef = useRef<HTMLTextAreaElement>(null)
+   const markdownRef = useRef<HTMLInputElement>(null);
     const [selectedTags, setSelectedTags] = useState<Tag[]>([])
     function handleSubmit(e: FormEvent) {
         e.preventDefault();
         onSubmit({
-            title: titleRef.current!.value
-            markdown: markdonwRef.current!.value
+            title: titleRef.current!.value,
+            markdown: markdownRef.current!.value,
             tags: []
         })
     }
@@ -38,15 +38,15 @@ export function NoteForm({onSubmit} : NoteFormProps) {
                             return { label: tag.label, value: tag.id}
                         })}
                         onChange={tags => {
-                            setSelectedTags(tags.map(tag => ({ label: tag.label, id: tag.value })));
-                        }}
+                    setSelectedTags(tags.map(tag => ({ label: tag.label, id: tag.value })));
+                }}
                     />
                 </FormGroup>
             </Col>
            </Row>
             <FormGroup controlId="markdown">
                 <Form.Label>Body</Form.Label>
-                <Form.Control required as="textarea" ref={markdonwRef} rows={15} />
+                <Form.Control required as="textarea" ref={markdownRef} rows={15} />
             </FormGroup>
             <Stack direction="horizontal" gap={1} className="justify-content-end">
                 <Button type="submit" variant="primary">Save</Button>
