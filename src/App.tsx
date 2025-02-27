@@ -46,6 +46,7 @@ function App() {
 
   // function handles the creation of a note
   // function onCreateNote(data: NoteData){
+  // sampleconntne
 
   // } 
   return (
