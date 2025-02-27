@@ -4,7 +4,7 @@ import { Route, Routes, Navigate } from "react-router-dom"
 import { NewNote } from "./NewNote"
 import { useLocalStorage } from "./useLocalStorage"
 import { useMemo } from "react"
-
+import {v4 as uuidV4} from "uuid"
 
 export type Note = {
   id: string
@@ -45,15 +45,22 @@ function App() {
   }, [notes, tags])
 
   // function handles the creation of a note
-  // function onCreateNote(data: NoteData){
-  // sampleconntne
+  function onCreateNote({tags, ...data}: NoteData) {
+    setNotes(prevNotes => {
+      return [...prevNotes, {...data, id: uuidV4(), tagIds: tags.map(tag => tag.id) }]
+    })
+  }
+  // function onCreateNote(data: NoteData){  // function to add tag
+  function addTag(tag: Tag) {
+    setTags(prev => [...prev, tag])
+  }
 
-  // } 
+
   return (
     <Container className="my-4">
     <Routes>
       <Route path="/" element={<h1>Home</h1>} />
-      <Route path="/new" element={<NewNote/>} />
+      <Route path="/new" element={<NewNote onSubmit={onCreateNote} onAddTag={addTag} availableTags={tags}/>} />
       <Route path="/:id">
         <Route index element={<h1>View</h1>}/>
         <Route path="edit" element={<h1>Edit</h1>}/>
