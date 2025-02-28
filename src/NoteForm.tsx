@@ -43,7 +43,6 @@ export function NoteForm({onSubmit, onAddTag, availableTags} : NoteFormProps) {
                             setSelectedTags(prev => [...prev, newTag])
                         }}
                         isMulti 
-
                         options={availableTags.map(tag => {
                             return {label:tag.label, value:tag.id}
                         })}
