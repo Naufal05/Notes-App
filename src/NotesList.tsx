@@ -110,4 +110,3 @@ function NoteCard({id, title, tags}: SimpliefiedNote) {
        </Card>
     )
 }
-// test
