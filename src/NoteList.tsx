@@ -35,6 +35,7 @@ type EditTagsModalProps = {
   onUpdateTag: (id: string, label: string) => void
 }
 
+
 export function NoteList({
   availableTags,
   notes,
